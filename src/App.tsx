@@ -1,6 +1,5 @@
 import React, { FC, Fragment } from 'react'
 import { GlobalStyle } from './GlobalStyle'
-import logo from './logo.svg'
 import { Title } from './styledComponentExample'
 
 const App: FC = () => {
@@ -9,8 +8,7 @@ const App: FC = () => {
       <GlobalStyle />
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Title>Test Styled Components</Title>
+          <Title>NYT Article Search</Title>
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
