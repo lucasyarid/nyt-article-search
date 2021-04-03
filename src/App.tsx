@@ -1,6 +1,8 @@
 import React, { FC, Fragment } from 'react'
 import { GlobalStyles } from './Base/styles/GlobalStyles'
 
+import Icon from 'DesignSystem/quarks/Icon'
+
 const App: FC = () => {
   return (
     <Fragment>
@@ -13,6 +15,7 @@ const App: FC = () => {
           <h4>h4</h4>
           <h5>h5</h5>
           <h6>h6</h6>
+          <Icon.MagnifyingGlass />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
