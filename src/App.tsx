@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import { Title } from './styledComponentExample'
 
 const App: FC = () => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Title>Test Styled Components</Title>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
