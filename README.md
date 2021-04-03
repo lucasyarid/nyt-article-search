@@ -1,4 +1,4 @@
-#  New York Times Search Articles
+# New York Times Search Articles
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 A simple react app that searches and displays New York Times articles.
