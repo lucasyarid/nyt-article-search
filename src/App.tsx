@@ -8,9 +8,11 @@ const App: FC = () => (
   <Router>
     <GlobalStyles />
 
-    <Switch>
-      <ArticleRoutes />
-    </Switch>
+    <div className="App dark">
+      <Switch>
+        <ArticleRoutes />
+      </Switch>
+    </div>
   </Router>
 )
 

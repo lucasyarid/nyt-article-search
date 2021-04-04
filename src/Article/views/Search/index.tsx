@@ -1,7 +1,14 @@
-import React, { FC, Fragment, useState } from 'react'
+import React, { FC, useState } from 'react'
 
-import { Dialog, Image } from 'DesignSystem/atoms'
+import styled from 'styled-components'
+
+import { Dialog } from 'DesignSystem/atoms'
 import { InputSearch } from 'DesignSystem/organisms'
+import { CenteredTemplate } from 'DesignSystem/templates'
+
+export const Wrapper = styled.div`
+  width: 1024px;
+`
 
 const resultList = ['title 1', 'title 2', 'title 3', 'title 4']
 
@@ -18,8 +25,8 @@ export const SearchView: FC = () => {
   const onClose = () => setIsVisible(false)
 
   return (
-    <Fragment>
-      <div className="App dark">
+    <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
+      <Wrapper>
         <InputSearch
           isLoading={false}
           name="search"
@@ -36,14 +43,13 @@ export const SearchView: FC = () => {
           selected={selected}
           setSelected={setSelected}
         />
-      </div>
-      <Image src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300" />
+      </Wrapper>
       <Dialog
         isVisible={isVisible}
         title="title"
         content="content"
         onClose={onClose}
       />
-    </Fragment>
+    </CenteredTemplate>
   )
 }
