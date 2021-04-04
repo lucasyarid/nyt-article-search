@@ -42,7 +42,7 @@ const StyledIcon = styled.svg`
   fill: var(--gray);
 `
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
   icon?: IconType

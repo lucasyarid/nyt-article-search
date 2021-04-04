@@ -1,46 +1,50 @@
 import React, { FC, Fragment, useState } from 'react'
 import { GlobalStyles } from './Base/styles/GlobalStyles'
 
-import Icon from 'DesignSystem/quarks/Icon'
-import { Input } from 'DesignSystem/atoms/Input'
+import { InputSearch } from 'DesignSystem/molecules/InputSearch'
+
+const resultList = [
+  {
+    id: '1',
+    title: 'title 1',
+  },
+  {
+    id: '2',
+    title: 'title 2',
+  },
+  {
+    id: '3',
+    title: 'title 3',
+  },
+]
 
 const App: FC = () => {
   const [search, setSearch] = useState('')
 
-  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearch(e.target.value)
+  const onDebounced = (e: string) => setSearch(e)
+
+  const onClickNext = () => console.log('onClickNext')
+  const onClickPrevious = () => console.log('onClickPrevious')
 
   return (
     <Fragment>
       <GlobalStyles />
-      <div className="App">
+      <div className="App dark">
         <header className="App-header">
-          <h1>h1</h1>
-          <h2>h2</h2>
-          <h3>h3</h3>
-          <h4>h4</h4>
-          <h5>h5</h5>
-          <h6>h6</h6>
-          <Input
+          <InputSearch
+            isLoading={false}
             name="search"
             label="Search for Articles"
             placeholder="search"
-            icon={Icon.MagnifyingGlass}
+            onDebounced={onDebounced}
+            resultList={resultList}
             value={search}
-            onChange={searchHandler}
+            delay={300}
+            isFirstPage={false}
+            isLastPage={false}
+            onClickNext={onClickNext}
+            onClickPrevious={onClickPrevious}
           />
-          {search}
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     </Fragment>
