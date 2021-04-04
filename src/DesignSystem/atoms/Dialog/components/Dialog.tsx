@@ -61,7 +61,7 @@ export const Dialog: FC<DialogProps> = ({
   return (
     <DialogWrapper isVisible={isVisible}>
       <DialogBox>
-        <Close onClick={onClose} />
+        <Close onClick={onClose} aria-label="Close" />
         <h4>{title}</h4>
         <p>{content}</p>
       </DialogBox>
