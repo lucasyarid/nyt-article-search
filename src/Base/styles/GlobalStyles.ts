@@ -3,12 +3,14 @@ import { createGlobalStyle } from 'styled-components'
 import { colorVars } from './colors'
 import { borderVars } from './border'
 import { typographyVars, headings } from './typography'
+import { zIndexVars } from './zIndex'
 
 export const GlobalStyles = createGlobalStyle`
   :root {
     ${typographyVars}
     ${colorVars}
     ${borderVars}
+    ${zIndexVars}
   }
 
   * {
