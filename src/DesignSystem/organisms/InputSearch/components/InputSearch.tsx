@@ -1,13 +1,11 @@
 import React, { FC, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 
-import { Input, InputProps } from 'DesignSystem/atoms'
 import { Icon } from 'DesignSystem/quarks'
+import { Input, InputProps, NavigationProps } from 'DesignSystem/atoms'
+import { DropdownContent, SearchList } from 'DesignSystem/molecules'
 
 import { useDebounce } from '../hooks/useDebounce'
-import { DropdownContent } from './DropdownContent'
-import { SearchList } from '../types/Dropdown'
-import { NavigationProps } from './Navigation'
 
 const InputSearchWrapper = styled.div`
   position: relative;

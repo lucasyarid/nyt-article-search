@@ -1,3 +1,4 @@
-import { InputSearch } from './InputSearch'
+import { DropdownContent, SearchList } from './DropdownContent'
 
-export { InputSearch }
+export { DropdownContent }
+export type { SearchList }

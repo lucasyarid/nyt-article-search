@@ -5,7 +5,7 @@ import { axe } from 'jest-axe'
 
 import { Icon } from 'DesignSystem/quarks'
 
-import { Input } from '.'
+import { Input } from '../Input'
 
 describe('Input', () => {
   const name = 'inputName'

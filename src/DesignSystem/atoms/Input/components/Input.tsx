@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { InputProps } from '../types/InputProps'
+import { InputProps } from '../types'
 
 import {
   InputWrapper,

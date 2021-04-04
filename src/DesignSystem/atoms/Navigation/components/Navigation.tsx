@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { Icon } from 'DesignSystem/quarks'
+import { NavigationProps } from '../types'
 
 const NavigationWrapper = styled.div`
   display: flex;
@@ -24,13 +25,6 @@ const NavigationWrapper = styled.div`
     }
   }
 `
-
-export interface NavigationProps {
-  isFirstPage: boolean
-  isLastPage: boolean
-  onClickNext?: () => void
-  onClickPrevious?: () => void
-}
 
 export const Navigation: FC<NavigationProps> = ({
   isFirstPage,

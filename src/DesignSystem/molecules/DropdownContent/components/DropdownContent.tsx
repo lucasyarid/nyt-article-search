@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { SearchList } from '../types/Dropdown'
-import { Navigation, NavigationProps } from './Navigation'
+
+import { Navigation } from 'DesignSystem/atoms'
+
+import { DropdownContentProps } from '../types'
 
 const StyledDropdownContent = styled.div`
   margin-top: 10px;
@@ -32,8 +34,6 @@ const StyledTitle = styled.h5`
     background-color: var(--light-gray);
   }
 `
-
-interface DropdownContentProps extends SearchList, NavigationProps {}
 
 export const DropdownContent: FC<DropdownContentProps> = ({
   selected,
