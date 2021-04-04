@@ -15,13 +15,8 @@ const StyledDropdownContent = styled.div`
   overflow: hidden;
 `
 
-const StyledTitle = styled.h5`
-  .dark & {
-    color: var(--black);
-  }
-
-  margin: 0;
-  padding: 15px 30px;
+const StyledList = styled.li`
+  cursor: pointer;
   color: var(--black);
   border-radius: var(--border-radius);
   transition: background-color 0.5s, border-radius 0.5s;
@@ -32,6 +27,14 @@ const StyledTitle = styled.h5`
   &:hover,
   &.selected {
     background-color: var(--light-gray);
+  }
+
+  & h5 {
+    margin: 0;
+    padding: 15px 30px;
+    .dark & {
+      color: var(--black);
+    }
   }
 `
 
@@ -48,17 +51,18 @@ export const DropdownContent: FC<DropdownContentProps> = ({
 
   return (
     <StyledDropdownContent>
-      <div>
+      <ul role="tablist">
         {resultList.map((listItem, key) => (
-          <StyledTitle
+          <StyledList
+            role="tab"
             key={key}
             aria-selected={selected === key}
             onMouseOver={handleOnMouseOver(key)}
           >
-            {listItem.title}
-          </StyledTitle>
+            <h5>{listItem}</h5>
+          </StyledList>
         ))}
-      </div>
+      </ul>
 
       <Navigation
         isFirstPage={isFirstPage}

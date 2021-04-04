@@ -1,12 +1,7 @@
 import { NavigationProps } from 'DesignSystem/atoms'
 
-export interface SearchItem {
-  title: string
-  id: string
-}
-
 export interface SearchList {
-  resultList: SearchItem[]
+  resultList: string[]
   selected: number
   setSelected: (e: number) => void
 }

@@ -3,24 +3,7 @@ import { GlobalStyles } from './Base/styles/GlobalStyles'
 
 import { InputSearch } from 'DesignSystem/organisms'
 
-const resultList = [
-  {
-    id: '1',
-    title: 'title 1',
-  },
-  {
-    id: '2',
-    title: 'title 2',
-  },
-  {
-    id: '3',
-    title: 'title 3',
-  },
-  {
-    id: '4',
-    title: 'title 4',
-  },
-]
+const resultList = ['title 1', 'title 2', 'title 3', 'title 4']
 
 const App: FC = () => {
   const [search, setSearch] = useState('')
