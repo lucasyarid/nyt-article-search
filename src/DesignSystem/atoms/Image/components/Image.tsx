@@ -13,7 +13,7 @@ export const Image: FC<ImgHTMLAttributes<HTMLImageElement>> = ({
 
   useEffect(() => {
     loadImg()
-  }, [src])
+  }, [])
 
   return <img src={imageSrc} {...props} />
 }
