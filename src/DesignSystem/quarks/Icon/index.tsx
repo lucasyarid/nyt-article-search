@@ -5,6 +5,7 @@ import {
   AiOutlineLeft,
   AiOutlineRight,
 } from 'react-icons/ai'
+import { RotatingLoading } from './components/RotatingLoading'
 
 export enum IconOptions {
   MAGNIFYING_GLASS = 'MagnifyingGlass',
@@ -12,6 +13,7 @@ export enum IconOptions {
   ARROW_DOWN = 'ArrowDown',
   ARROW_LEFT = 'ArrowLeft',
   ARROW_RIGHT = 'ArrowRight',
+  LOADING = 'Loading',
 }
 
 export default {
@@ -20,4 +22,5 @@ export default {
   [IconOptions.ARROW_DOWN]: AiOutlineDown,
   [IconOptions.ARROW_LEFT]: AiOutlineLeft,
   [IconOptions.ARROW_RIGHT]: AiOutlineRight,
+  [IconOptions.LOADING]: RotatingLoading,
 }
