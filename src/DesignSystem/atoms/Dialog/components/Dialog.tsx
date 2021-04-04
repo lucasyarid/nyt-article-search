@@ -25,6 +25,7 @@ const DialogWrapper = styled.div<DialogWrapperProps>`
   transition: opacity 0.5s;
 
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  pointer-events: ${(props) => (props.isVisible ? 'auto' : 'none')};
 `
 
 const DialogBox = styled.div`
