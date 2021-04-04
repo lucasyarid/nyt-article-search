@@ -7,7 +7,7 @@ export const CenteredTemplateContent = styled.div`
   z-index: var(--z-index-layout);
 `
 
-export const CenteredTemplateWrapper = styled.section<CenteredTemplateProps>`
+export const CenteredTemplateWrapper = styled.section`
   width: 100vw;
   height: 100vh;
   display: grid;

@@ -8,7 +8,7 @@ const App: FC = () => (
   <Router>
     <GlobalStyles />
 
-    <div className="App dark">
+    <div className="App">
       <Switch>
         <ArticleRoutes />
       </Switch>

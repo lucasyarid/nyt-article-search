@@ -34,12 +34,12 @@ export const headings = css`
     }
   }
   h1 {
-    font-size: 6rem;
-    line-height: 6.5rem;
+    font-size: 3.7rem;
+    line-height: 4rem;
   }
   h2 {
     font-size: 3rem;
-    line-height: 3.5rem;
+    line-height: 3rem;
   }
   h3 {
     font-size: 2.5rem;
@@ -56,5 +56,12 @@ export const headings = css`
   h6 {
     font-size: 1rem;
     line-height: 1rem;
+  }
+
+  time {
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 50px;
+    display: block;
   }
 `

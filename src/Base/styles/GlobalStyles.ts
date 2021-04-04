@@ -19,6 +19,10 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   ${headings}
 
   .App {
