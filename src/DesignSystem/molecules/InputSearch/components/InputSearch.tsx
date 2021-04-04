@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 
 import { Input, InputProps } from 'DesignSystem/atoms'
@@ -6,18 +6,20 @@ import { Icon } from 'DesignSystem/quarks'
 
 import { useDebounce } from '../hooks/useDebounce'
 import { DropdownContent } from './DropdownContent'
-import { SearchItem } from '../types/Dropdown'
+import { SearchList } from '../types/Dropdown'
 import { NavigationProps } from './Navigation'
 
 const InputSearchWrapper = styled.div`
   position: relative;
 `
 
-interface InputSearchProps extends InputProps, NavigationProps {
+interface InputSearchProps
+  extends Omit<InputProps, 'onMouseOver'>,
+    NavigationProps,
+    SearchList {
   isLoading?: boolean
   delay: number
   value: string
-  resultList: SearchItem[]
   onDebounced: (e: string) => void
 }
 
@@ -31,6 +33,8 @@ export const InputSearch: FC<InputSearchProps> = ({
   onClickNext,
   onClickPrevious,
   value,
+  selected,
+  setSelected,
   ...props
 }: InputSearchProps) => {
   const [newValue, handleInputChange] = useDebounce({
@@ -41,12 +45,25 @@ export const InputSearch: FC<InputSearchProps> = ({
 
   const icon = isLoading ? Icon.Loading : Icon.MagnifyingGlass
 
+  const onKeyDown = ({ key }: KeyboardEvent<HTMLDivElement>) => {
+    if (key === 'ArrowDown') {
+      if (selected + 1 < resultList.length) setSelected(selected + 1)
+      else setSelected(0)
+    }
+    if (key === 'ArrowUp') {
+      if (selected - 1 >= 0) setSelected(selected - 1)
+      else setSelected(resultList.length - 1)
+    }
+  }
+
   return (
     <InputSearchWrapper>
       <Input
         icon={icon}
         value={newValue}
+        onKeyDown={onKeyDown}
         onChange={handleInputChange}
+        autoComplete="off"
         {...props}
       />
       <DropdownContent
@@ -55,6 +72,8 @@ export const InputSearch: FC<InputSearchProps> = ({
         isLastPage={isLastPage}
         onClickNext={onClickNext}
         onClickPrevious={onClickPrevious}
+        selected={selected}
+        setSelected={setSelected}
       />
     </InputSearchWrapper>
   )

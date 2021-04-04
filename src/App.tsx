@@ -24,6 +24,7 @@ const resultList = [
 
 const App: FC = () => {
   const [search, setSearch] = useState('')
+  const [selected, setSelected] = useState(0)
 
   const onDebounced = (e: string) => setSearch(e)
 
@@ -48,6 +49,8 @@ const App: FC = () => {
             isLastPage={false}
             onClickNext={onClickNext}
             onClickPrevious={onClickPrevious}
+            selected={selected}
+            setSelected={setSelected}
           />
         </header>
       </div>

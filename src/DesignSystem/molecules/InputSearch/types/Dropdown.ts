@@ -5,4 +5,6 @@ export interface SearchItem {
 
 export interface SearchList {
   resultList: SearchItem[]
+  selected: number
+  setSelected: (e: number) => void
 }

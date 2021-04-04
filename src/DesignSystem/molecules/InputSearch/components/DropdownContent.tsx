@@ -21,36 +21,51 @@ const StyledTitle = styled.h5`
   margin: 0;
   padding: 15px 30px;
   color: var(--black);
-  background-color: var(--white);
+  border-radius: var(--border-radius);
   transition: background-color 0.5s, border-radius 0.5s;
 
-  &:hover {
+  background-color: ${(props) =>
+    props['aria-selected'] ? 'var(--light-gray)' : 'var(--white)'};
+
+  &:hover,
+  &.selected {
     background-color: var(--light-gray);
-    border-radius: var(--border-radius);
   }
 `
 
 interface DropdownContentProps extends SearchList, NavigationProps {}
 
 export const DropdownContent: FC<DropdownContentProps> = ({
+  selected,
+  setSelected,
   resultList,
   isFirstPage,
   isLastPage,
   onClickNext,
   onClickPrevious,
-}: DropdownContentProps) => (
-  <StyledDropdownContent>
-    <div>
-      {resultList.map((listItem, key) => (
-        <StyledTitle key={key}>{listItem.title}</StyledTitle>
-      ))}
-    </div>
+}: DropdownContentProps) => {
+  const handleOnMouseOver = (key: number) => () => setSelected(key)
 
-    <Navigation
-      isFirstPage={isFirstPage}
-      isLastPage={isLastPage}
-      onClickNext={onClickNext}
-      onClickPrevious={onClickPrevious}
-    />
-  </StyledDropdownContent>
-)
+  return (
+    <StyledDropdownContent>
+      <div>
+        {resultList.map((listItem, key) => (
+          <StyledTitle
+            key={key}
+            aria-selected={selected === key}
+            onMouseOver={handleOnMouseOver(key)}
+          >
+            {listItem.title}
+          </StyledTitle>
+        ))}
+      </div>
+
+      <Navigation
+        isFirstPage={isFirstPage}
+        isLastPage={isLastPage}
+        onClickNext={onClickNext}
+        onClickPrevious={onClickPrevious}
+      />
+    </StyledDropdownContent>
+  )
+}
