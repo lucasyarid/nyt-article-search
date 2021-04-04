@@ -7,4 +7,5 @@ export const colorVars = css`
   --black: #222222;
   --white: #ffffff;
   --drop-shadow: 20px 21px 21px -10px rgba(0, 0, 0, 0.2);
+  --drop-background: rgba(0, 0, 0, 0.3);
 `

@@ -4,6 +4,7 @@ import {
   AiOutlineDown,
   AiOutlineLeft,
   AiOutlineRight,
+  AiOutlineClose,
 } from 'react-icons/ai'
 import { RotatingLoading } from './components/RotatingLoading'
 
@@ -14,6 +15,7 @@ export enum IconOptions {
   ARROW_LEFT = 'ArrowLeft',
   ARROW_RIGHT = 'ArrowRight',
   LOADING = 'Loading',
+  CROSS = 'Cross',
 }
 
 export default {
@@ -23,4 +25,5 @@ export default {
   [IconOptions.ARROW_LEFT]: AiOutlineLeft,
   [IconOptions.ARROW_RIGHT]: AiOutlineRight,
   [IconOptions.LOADING]: RotatingLoading,
+  [IconOptions.CROSS]: AiOutlineClose,
 }

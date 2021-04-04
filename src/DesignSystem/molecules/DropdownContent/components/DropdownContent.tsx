@@ -11,7 +11,7 @@ const StyledDropdownContent = styled.div`
   background-color: var(--white);
   border-radius: var(--border-radius);
   box-shadow: var(--drop-shadow);
-  z-index: 1;
+  z-index: var(--z-index-dropdown);
   overflow: hidden;
 `
 

@@ -26,7 +26,6 @@ export const headings = css`
     color: var(--black);
     font-family: var(--heading);
     font-weight: 400;
-    text-align: left;
     letter-spacing: 1px;
     margin-bottom: 16px;
 
