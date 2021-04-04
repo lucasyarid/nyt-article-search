@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { Input, InputProps } from 'DesignSystem/atoms/Input'
-import Icon from 'DesignSystem/quarks/Icon'
+import { Input, InputProps } from 'DesignSystem/atoms'
+import { Icon } from 'DesignSystem/quarks'
 
 import { useDebounce } from '../hooks/useDebounce'
 import { DropdownContent } from './DropdownContent'

@@ -1,7 +1,7 @@
 import React, { FC, Fragment, useState } from 'react'
 import { GlobalStyles } from './Base/styles/GlobalStyles'
 
-import { InputSearch } from 'DesignSystem/molecules/InputSearch'
+import { InputSearch } from 'DesignSystem/molecules'
 
 const resultList = [
   {

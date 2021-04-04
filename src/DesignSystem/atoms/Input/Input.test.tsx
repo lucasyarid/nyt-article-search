@@ -3,7 +3,7 @@ import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe } from 'jest-axe'
 
-import Icon from 'DesignSystem/quarks/Icon'
+import { Icon } from 'DesignSystem/quarks'
 
 import { Input } from '.'
 

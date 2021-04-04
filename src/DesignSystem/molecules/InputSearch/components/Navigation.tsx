@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import Icon from 'DesignSystem/quarks/Icon'
+import { Icon } from 'DesignSystem/quarks'
 
 const NavigationWrapper = styled.div`
   display: flex;
