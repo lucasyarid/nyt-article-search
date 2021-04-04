@@ -5,21 +5,28 @@ import { Navigation, NavigationProps } from './Navigation'
 
 const StyledDropdownContent = styled.div`
   margin-top: 10px;
-  padding: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   background-color: var(--white);
-  border-radius: 30px 30px;
+  border-radius: var(--border-radius);
   box-shadow: var(--drop-shadow);
   z-index: 1;
+  overflow: hidden;
+`
 
-  h5,
-  .dark & h5 {
+const StyledTitle = styled.h5`
+  .dark & {
     color: var(--black);
-    padding: 10px 5px;
-    margin-bottom: 0;
-    &:not(:last-child) {
-      border-bottom: 1px solid var(--light-gray);
-    }
+  }
+
+  margin: 0;
+  padding: 15px 30px;
+  color: var(--black);
+  background-color: var(--white);
+  transition: background-color 0.5s, border-radius 0.5s;
+
+  &:hover {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
   }
 `
 
@@ -33,9 +40,11 @@ export const DropdownContent: FC<DropdownContentProps> = ({
   onClickPrevious,
 }: DropdownContentProps) => (
   <StyledDropdownContent>
-    {resultList.map((listItem, key) => (
-      <h5 key={key}>{listItem.title}</h5>
-    ))}
+    <div>
+      {resultList.map((listItem, key) => (
+        <StyledTitle key={key}>{listItem.title}</StyledTitle>
+      ))}
+    </div>
 
     <Navigation
       isFirstPage={isFirstPage}

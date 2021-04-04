@@ -6,17 +6,21 @@ import { Icon } from 'DesignSystem/quarks'
 const NavigationWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  transform: translateY(25px);
+  transform: translateY(8px);
+  padding: 0 25px;
 
   svg {
-    width: 25px;
-    height: 25px;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
     fill: var(--black);
     cursor: pointer;
-    transition: fill 0.5s;
+    border-radius: 50%;
+    transition: fill 0.5s, background-color 0.5s;
 
     &:hover {
-      fill: var(--gray);
+      fill: var(--white);
+      background-color: var(--light-gray);
     }
   }
 `

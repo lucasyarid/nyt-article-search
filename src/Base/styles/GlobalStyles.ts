@@ -1,12 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
 
 import { colorVars } from './colors'
+import { borderVars } from './border'
 import { typographyVars, headings } from './typography'
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    ${colorVars}
     ${typographyVars}
+    ${colorVars}
+    ${borderVars}
   }
 
   * {

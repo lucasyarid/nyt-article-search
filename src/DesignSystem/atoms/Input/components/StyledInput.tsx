@@ -19,7 +19,7 @@ export const StyledInput = styled.input`
   padding: 15px 30px;
   padding-right: 60px;
 
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   border: none;
   box-shadow: var(--drop-shadow);
 
