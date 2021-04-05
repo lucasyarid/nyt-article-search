@@ -13,6 +13,8 @@ export const CenteredTemplateWrapper = styled.section`
   display: grid;
   justify-content: center;
   align-content: center;
+  overflow: hidden;
+  position: relative;
 `
 
 export const CenteredTemplateBackground = styled.div<CenteredTemplateProps>`
@@ -29,7 +31,7 @@ export const CenteredTemplateBackground = styled.div<CenteredTemplateProps>`
   background-repeat: no-repeat;
 
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  transform: scale(1.1);
 `
 
 export const CenteredTemplate: FC<CenteredTemplateProps> = ({

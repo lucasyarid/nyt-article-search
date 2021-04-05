@@ -12,6 +12,7 @@ export const headings = css`
     font-size: 16px;
     letter-spacing: 1px;
     color: var(--black);
+    margin-bottom: 10px;
 
     .dark & {
       color: var(--white);
@@ -36,6 +37,7 @@ export const headings = css`
   h1 {
     font-size: 3.7rem;
     line-height: 4rem;
+    margin-top: 10px;
   }
   h2 {
     font-size: 3rem;
@@ -56,6 +58,12 @@ export const headings = css`
   h6 {
     font-size: 1rem;
     line-height: 1rem;
+  }
+
+  a {
+    color: var(--dark);
+    text-decoration: none;
+    margin: 10px 0;
   }
 
   time {

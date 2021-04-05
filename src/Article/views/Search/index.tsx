@@ -7,7 +7,7 @@ import { InputSearch } from 'DesignSystem/organisms'
 import { CenteredTemplate } from 'DesignSystem/templates'
 
 export const Wrapper = styled.div`
-  width: 1024px;
+  width: 750px;
 `
 
 const resultList = ['title 1', 'title 2', 'title 3', 'title 4']
@@ -29,8 +29,7 @@ export const SearchView: FC = () => {
       <Wrapper>
         <InputSearch
           isLoading={false}
-          name="search"
-          label="Search for Articles"
+          name="search articles"
           placeholder="search"
           onDebounced={onDebounced}
           resultList={resultList}

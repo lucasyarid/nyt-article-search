@@ -34,7 +34,7 @@ export const StyledIcon = styled.svg`
   height: 30px;
 
   position: absolute;
-  top: 47%;
+  bottom: 17px;
   right: 20px;
 
   fill: var(--gray);

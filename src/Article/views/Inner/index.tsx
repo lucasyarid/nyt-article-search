@@ -16,6 +16,7 @@ export const InnerView: FC = () => {
   return (
     <ImageContentTemplate>
       <ImageContentLeft>
+        <a href="#">Go to results page</a>
         <h1>
           A Visceral and Fabulist Short Story Collection Filled With Roots,
           Inheritance and Blood
@@ -25,6 +26,7 @@ export const InnerView: FC = () => {
           Carribean Fragoza’s new collection, “Eat the Mouth That Feeds You,”
           moves between horror and the real.
         </p>
+        <a href="#">Read the full article</a>
       </ImageContentLeft>
       <ImageContentRight>
         <Image src="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg" />
