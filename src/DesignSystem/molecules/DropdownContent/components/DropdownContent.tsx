@@ -46,6 +46,7 @@ export const DropdownContent: FC<DropdownContentProps> = ({
   isLastPage,
   onClickNext,
   onClickPrevious,
+  onClick,
 }: DropdownContentProps) => {
   const handleOnMouseOver = (key: number) => () => setSelected(key)
 
@@ -58,6 +59,7 @@ export const DropdownContent: FC<DropdownContentProps> = ({
             key={key}
             aria-selected={selected === key}
             onMouseOver={handleOnMouseOver(key)}
+            onClick={onClick}
           >
             <h5>{listItem}</h5>
           </StyledList>

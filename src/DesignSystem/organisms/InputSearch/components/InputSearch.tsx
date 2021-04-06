@@ -12,13 +12,14 @@ const InputSearchWrapper = styled.div`
 `
 
 interface InputSearchProps
-  extends Omit<InputProps, 'onMouseOver'>,
+  extends Omit<InputProps, 'onMouseOver' | 'onClick'>,
     NavigationProps,
     SearchList {
   isLoading?: boolean
   delay: number
   value: string
   onDebounced: (e: string) => void
+  onEnter: () => void
 }
 
 export const InputSearch: FC<InputSearchProps> = ({
@@ -28,6 +29,8 @@ export const InputSearch: FC<InputSearchProps> = ({
   resultList,
   isFirstPage,
   isLastPage,
+  onEnter,
+  onClick,
   onClickNext,
   onClickPrevious,
   value,
@@ -43,15 +46,18 @@ export const InputSearch: FC<InputSearchProps> = ({
 
   const icon = isLoading ? Icon.Loading : Icon.MagnifyingGlass
 
-  const onKeyDown = ({ key }: KeyboardEvent<HTMLDivElement>) => {
-    if (key === 'ArrowDown') {
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
       if (selected + 1 < resultList.length) setSelected(selected + 1)
       else setSelected(0)
     }
-    if (key === 'ArrowUp') {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
       if (selected - 1 >= 0) setSelected(selected - 1)
       else setSelected(resultList.length - 1)
     }
+    if (e.key === 'Enter') onEnter()
   }
 
   return (
@@ -72,6 +78,7 @@ export const InputSearch: FC<InputSearchProps> = ({
         onClickPrevious={onClickPrevious}
         selected={selected}
         setSelected={setSelected}
+        onClick={onClick}
       />
     </InputSearchWrapper>
   )

@@ -18,7 +18,7 @@ export const SearchView: FC = () => {
   const location = useLocation()
 
   const [selected, setSelected] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
   const queryFromUrl = new URLSearchParams(location.search).get('q') as string
   const pageFromUrl = new URLSearchParams(location.search).get('page') as string
@@ -67,15 +67,17 @@ export const SearchView: FC = () => {
     fetchData(undefined, nextPage)
   }
 
-  const onClose = () => setIsVisible(false)
+  const onClose = () => setHasError(false)
+
+  const headToArticle = () => console.log(selected)
 
   return (
     <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
       <Wrapper>
         <InputSearch
           isLoading={false}
-          name="search articles"
-          placeholder="search"
+          name="search"
+          placeholder="Search New York Times articles"
           onDebounced={onDebounced}
           resultList={resultList}
           value={queryFromUrl || ''}
@@ -86,10 +88,12 @@ export const SearchView: FC = () => {
           onClickPrevious={onClickPrevious}
           selected={selected}
           setSelected={setSelected}
+          onClick={headToArticle}
+          onEnter={headToArticle}
         />
       </Wrapper>
       <Dialog
-        isVisible={isVisible}
+        isVisible={hasError}
         title="title"
         content="content"
         onClose={onClose}
