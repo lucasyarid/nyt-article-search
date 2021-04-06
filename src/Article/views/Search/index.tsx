@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import styled from 'styled-components'
 
 import { Dialog } from 'DesignSystem/atoms'
 import { InputSearch } from 'DesignSystem/organisms'
 import { CenteredTemplate } from 'DesignSystem/templates'
+import { fetchArticlesByQuery } from 'Article/api'
 
 export const Wrapper = styled.div`
   width: 750px;
@@ -23,6 +24,19 @@ export const SearchView: FC = () => {
   const onClickPrevious = () => console.log('onClickPrevious')
 
   const onClose = () => setIsVisible(false)
+
+  const fetchData = async () => {
+    const data = await fetchArticlesByQuery({
+      fq: 'document_type:("article")',
+      fl: ['_id', 'document_type', 'headline'],
+      q: 'Rupert Murdoch, Accepting Award, Condemns ‘Awful Woke Orthodoxy’',
+    })
+    console.log({ data })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
