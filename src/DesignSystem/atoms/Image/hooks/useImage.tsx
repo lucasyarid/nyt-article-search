@@ -1,11 +1,5 @@
 import { ImgHTMLAttributes, useState } from 'react'
-
-export interface UseImgOnLoadReturn {
-  image: HTMLImageElement
-  isLoaded: boolean
-  hasError: boolean
-  loadImg: () => void
-}
+import { UseImgOnLoadReturn } from './types'
 
 export const useImgOnLoad = ({
   src,

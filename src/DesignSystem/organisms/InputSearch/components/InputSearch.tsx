@@ -2,24 +2,16 @@ import React, { FC, useState, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 
 import { Icon } from 'DesignSystem/quarks'
-import { Input, InputProps } from 'DesignSystem/atoms'
+import { Input } from 'DesignSystem/atoms'
 import { DropdownContent } from 'DesignSystem/molecules'
 
 import { useDebounce } from '../hooks/useDebounce'
-import { ResultListItem } from 'DesignSystem/molecules/DropdownContent'
 import { useHistory } from 'react-router-dom'
+import { InputSearchProps } from '../types'
 
 const InputSearchWrapper = styled.div`
   position: relative;
 `
-
-interface InputSearchProps extends InputProps {
-  resultList: ResultListItem[]
-  isLoading?: boolean
-  delay: number
-  value: string
-  onDebounced: (e: string) => void
-}
 
 export const InputSearch: FC<InputSearchProps> = ({
   onDebounced,

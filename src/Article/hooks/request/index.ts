@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 
 import { fetchArticlesByQuery } from 'Article/api'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useQueryArticles = (q?: string, page?: string) =>
   useQuery(
     ['queryArticles', q, page],
@@ -22,6 +23,7 @@ export const useQueryArticles = (q?: string, page?: string) =>
     }
   )
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useQueryArticleById = (id?: string) =>
   useQuery(
     ['queryArticleById'],

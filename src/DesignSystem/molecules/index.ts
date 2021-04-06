@@ -1,4 +1,4 @@
-import { DropdownContent, SearchList } from './DropdownContent'
+import { DropdownContent, SearchList, ResultListItem } from './DropdownContent'
 
 export { DropdownContent }
-export type { SearchList }
+export type { SearchList, ResultListItem }

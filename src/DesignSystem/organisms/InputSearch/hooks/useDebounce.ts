@@ -1,12 +1,5 @@
 import { useState, useCallback } from 'react'
-
-interface useDebounceParams {
-  initialValue: string
-  delay: number
-  onDebounced: (e: string) => void
-}
-
-type useDebounceReturn = [string, (event: unknown) => () => void]
+import { useDebounceParams, useDebounceReturn } from '../types'
 
 export const useDebounce = ({
   initialValue,
