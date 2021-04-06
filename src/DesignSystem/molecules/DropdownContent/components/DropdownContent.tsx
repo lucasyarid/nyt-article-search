@@ -6,9 +6,8 @@ import { SearchList } from '../types'
 
 const StyledDropdownContent = styled.div`
   margin-top: 10px;
-  padding-bottom: 30px;
   background-color: var(--white);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-wrapper);
   box-shadow: var(--drop-shadow);
   z-index: var(--z-index-dropdown);
   overflow: hidden;

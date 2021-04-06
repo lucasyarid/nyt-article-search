@@ -68,7 +68,7 @@ export const InputSearch: FC<InputSearchProps> = ({
         autoComplete="off"
         {...props}
       />
-      {resultList.length ? (
+      {resultList.length && !!newValue ? (
         <DropdownContent
           resultList={resultList}
           selected={selected}

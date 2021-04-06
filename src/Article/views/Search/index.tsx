@@ -1,15 +1,10 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 
 import { Dialog, Navigation } from 'DesignSystem/atoms'
 import { InputSearch } from 'DesignSystem/organisms'
 import { CenteredTemplate } from 'DesignSystem/templates'
 import { useQueryArticles } from 'Article/hooks'
 import { useQueryString } from 'Base/router'
-
-export const Wrapper = styled.div`
-  width: 750px;
-`
 
 export const SearchView: FC = () => {
   const [page, setPage] = useQueryString('page')
@@ -42,26 +37,24 @@ export const SearchView: FC = () => {
 
   return (
     <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
-      <Wrapper>
-        <InputSearch
-          isLoading={isLoading}
-          name="search"
-          placeholder="Search New York Times articles"
-          onDebounced={onDebounced}
-          resultList={resultList}
-          value={query}
-          delay={500}
-        />
+      <InputSearch
+        isLoading={isLoading}
+        name="search"
+        placeholder="Search New York Times articles"
+        onDebounced={onDebounced}
+        resultList={resultList}
+        value={query}
+        delay={500}
+      />
 
-        {resultList.length ? (
-          <Navigation
-            isFirstPage={!Number(page)}
-            isLastPage={false}
-            onClickNext={onClickNext}
-            onClickPrevious={onClickPrevious}
-          />
-        ) : null}
-      </Wrapper>
+      {resultList.length && !!query ? (
+        <Navigation
+          isFirstPage={!Number(page)}
+          isLastPage={false}
+          onClickNext={onClickNext}
+          onClickPrevious={onClickPrevious}
+        />
+      ) : null}
       <Dialog
         isVisible={isError}
         title="Sorry for that"

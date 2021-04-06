@@ -12,12 +12,16 @@ export const headings = css`
     font-size: 16px;
     letter-spacing: 1px;
     color: var(--black);
-    margin-bottom: 10px;
 
     .dark & {
       color: var(--white);
     }
   }
+
+  p {
+    margin-bottom: 10px;
+  }
+
   h1,
   h2,
   h3,

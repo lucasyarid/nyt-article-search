@@ -14,7 +14,7 @@ export const CenteredTemplateWrapper = styled.section`
   justify-content: center;
   overflow: hidden;
   position: relative;
-  padding-top: 100px;
+  padding-top: 5vh;
 `
 
 export const CenteredTemplateBackground = styled.div<CenteredTemplateProps>`
@@ -34,12 +34,23 @@ export const CenteredTemplateBackground = styled.div<CenteredTemplateProps>`
   transform: scale(1.1);
 `
 
+export const Wrapper = styled.div`
+  width: 100vw;
+  padding: 0 20px;
+
+  @media screen and (min-width: 750px) {
+    width: 750px;
+  }
+`
+
 export const CenteredTemplate: FC<CenteredTemplateProps> = ({
   backgroundSrc,
   children,
 }: CenteredTemplateProps) => (
   <CenteredTemplateWrapper>
     <CenteredTemplateBackground backgroundSrc={backgroundSrc} />
-    <CenteredTemplateContent>{children}</CenteredTemplateContent>
+    <CenteredTemplateContent>
+      <Wrapper>{children}</Wrapper>
+    </CenteredTemplateContent>
   </CenteredTemplateWrapper>
 )
