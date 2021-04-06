@@ -1,19 +1,24 @@
 import React, { FC } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import { ArticleRoutes } from 'Article/routes'
 import { GlobalStyles } from 'Base/styles/GlobalStyles'
 
-const App: FC = () => (
-  <Router>
-    <GlobalStyles />
+const queryClient = new QueryClient()
 
-    <div className="App">
-      <Switch>
-        <ArticleRoutes />
-      </Switch>
-    </div>
-  </Router>
+const App: FC = () => (
+  <QueryClientProvider client={queryClient}>
+    <Router>
+      <GlobalStyles />
+
+      <div className="App">
+        <Switch>
+          <ArticleRoutes />
+        </Switch>
+      </div>
+    </Router>
+  </QueryClientProvider>
 )
 
 export default App
