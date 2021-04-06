@@ -7,20 +7,20 @@ import { NavigationProps } from '../types'
 const NavigationWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  transform: translateY(8px);
-  padding: 0 25px;
+  margin-top: 20px;
 
   svg {
     width: 45px;
     height: 45px;
-    padding: 5px;
+    padding: 10px;
     fill: var(--black);
     cursor: pointer;
     border-radius: 50%;
     transition: fill 0.5s, background-color 0.5s;
+    background-color: var(--white);
+    box-shadow: var(--drop-shadow);
 
     &:hover {
-      fill: var(--white);
       background-color: var(--light-gray);
     }
   }

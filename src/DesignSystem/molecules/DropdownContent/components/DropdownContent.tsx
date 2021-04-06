@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { Navigation } from 'DesignSystem/atoms'
-
-import { DropdownContentProps } from '../types'
+import { SearchList } from '../types'
 
 const StyledDropdownContent = styled.div`
   margin-top: 10px;
@@ -32,22 +30,22 @@ const StyledList = styled.li`
   & h6 {
     margin: 0;
     padding: 15px 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     .dark & {
       color: var(--black);
     }
   }
 `
 
-export const DropdownContent: FC<DropdownContentProps> = ({
+export const DropdownContent: FC<SearchList> = ({
   selected,
   setSelected,
   resultList,
-  isFirstPage,
-  isLastPage,
-  onClickNext,
-  onClickPrevious,
   onClick,
-}: DropdownContentProps) => {
+}: SearchList) => {
   const handleOnMouseOver = (key: number) => () => setSelected(key)
 
   return (
@@ -65,13 +63,6 @@ export const DropdownContent: FC<DropdownContentProps> = ({
           </StyledList>
         ))}
       </ul>
-
-      <Navigation
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-        onClickNext={onClickNext}
-        onClickPrevious={onClickPrevious}
-      />
     </StyledDropdownContent>
   )
 }

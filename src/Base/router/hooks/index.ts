@@ -1,7 +1,9 @@
-// import { ImgHTMLAttributes, useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-export const useUrlQuery = () => {
+export const useQueryString = (
+  key: string
+): [string, (newValue: string) => void] => {
   const history = useHistory()
   const location = useLocation()
 
@@ -11,12 +13,20 @@ export const useUrlQuery = () => {
   const setUrlParam = (paramKey: string, paramValue: string) => {
     const searchParams = new URLSearchParams(location.search)
     searchParams.set(paramKey, paramValue)
-    console.log('here', paramKey, paramValue, getQueryParamFromUrl('q'))
+
     history.push({
       search: searchParams.toString(),
     })
-    console.log({ history })
   }
 
-  return { getQueryParamFromUrl, setUrlParam }
+  const [value, setValue] = useState(getQueryParamFromUrl(key) || '')
+  const onSetValue = useCallback(
+    (newValue) => {
+      setValue(newValue)
+      setUrlParam(key, newValue)
+    },
+    [key]
+  )
+
+  return [value, onSetValue]
 }

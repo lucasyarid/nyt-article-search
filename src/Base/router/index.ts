@@ -1,3 +1,3 @@
-import { useUrlQuery } from './hooks'
+import { useQueryString } from './hooks'
 
-export { useUrlQuery }
+export { useQueryString }

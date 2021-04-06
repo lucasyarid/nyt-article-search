@@ -2,7 +2,7 @@ import React, { FC, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 
 import { Icon } from 'DesignSystem/quarks'
-import { Input, InputProps, NavigationProps } from 'DesignSystem/atoms'
+import { Input, InputProps } from 'DesignSystem/atoms'
 import { DropdownContent, SearchList } from 'DesignSystem/molecules'
 
 import { useDebounce } from '../hooks/useDebounce'
@@ -13,7 +13,6 @@ const InputSearchWrapper = styled.div`
 
 interface InputSearchProps
   extends Omit<InputProps, 'onMouseOver' | 'onClick'>,
-    NavigationProps,
     SearchList {
   isLoading?: boolean
   delay: number
@@ -27,12 +26,8 @@ export const InputSearch: FC<InputSearchProps> = ({
   delay,
   isLoading,
   resultList,
-  isFirstPage,
-  isLastPage,
   onEnter,
   onClick,
-  onClickNext,
-  onClickPrevious,
   value,
   selected,
   setSelected,
@@ -73,10 +68,6 @@ export const InputSearch: FC<InputSearchProps> = ({
       {resultList.length ? (
         <DropdownContent
           resultList={resultList}
-          isFirstPage={isFirstPage}
-          isLastPage={isLastPage}
-          onClickNext={onClickNext}
-          onClickPrevious={onClickPrevious}
           selected={selected}
           setSelected={setSelected}
           onClick={onClick}
