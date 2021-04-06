@@ -9,6 +9,7 @@ import {
 import { Dialog, Image } from 'DesignSystem/atoms'
 import { ArticleIdParam } from 'app/Article/routes/types'
 import { useQueryArticleById } from 'app/Article/hooks'
+import { NYT_URL_IMG } from './constants'
 
 export const InnerView: FC = () => {
   const { articleId } = useParams<ArticleIdParam>()
@@ -21,7 +22,6 @@ export const InnerView: FC = () => {
   const formatDate = new Intl.DateTimeFormat('en-GB', {
     dateStyle: 'full',
   }).format(currentArticle ? new Date(currentArticle.pub_date) : new Date())
-  const image = `http://www.nytimes.com/${currentArticle?.multimedia[0].url}`
 
   const goBack = () => history.goBack()
 
@@ -42,9 +42,13 @@ export const InnerView: FC = () => {
           </Fragment>
         ) : null}
       </ImageContentLeft>
+
       <ImageContentRight>
-        {currentArticle ? <Image src={image} /> : null}
+        {currentArticle ? (
+          <Image src={NYT_URL_IMG(currentArticle?.multimedia[0].url)} />
+        ) : null}
       </ImageContentRight>
+
       <Dialog
         isVisible={isError}
         title="Sorry for that"
