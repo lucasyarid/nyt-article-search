@@ -1,4 +1,3 @@
-type FilterQuery = 'document_type:("article")' | 'news_desk:("Art")'
 type LimitFields =
   | 'web_url'
   | 'snippet'
@@ -18,8 +17,8 @@ type LimitFields =
   | 'uri'
 
 export interface NYTSearchParams {
-  fq?: FilterQuery
   fl?: LimitFields[]
+  fq?: string
   q?: string
   page?: string
 }

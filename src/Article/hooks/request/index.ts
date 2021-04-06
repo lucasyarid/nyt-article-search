@@ -21,3 +21,19 @@ export const useQueryArticles = (q?: string, page?: string) =>
       retry: 2,
     }
   )
+
+export const useQueryArticleById = (id?: string) =>
+  useQuery(
+    ['queryArticleById'],
+    () =>
+      fetchArticlesByQuery({
+        fq: `_id:("${id}")`,
+        fl: ['_id', 'headline', 'snippet', 'multimedia', 'pub_date', 'web_url'],
+      }),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchIntervalInBackground: false,
+      retry: 2,
+    }
+  )

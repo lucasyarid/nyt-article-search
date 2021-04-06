@@ -1,3 +1,3 @@
-import { useQueryArticles } from './request'
+import { useQueryArticles, useQueryArticleById } from './request'
 
-export { useQueryArticles }
+export { useQueryArticles, useQueryArticleById }

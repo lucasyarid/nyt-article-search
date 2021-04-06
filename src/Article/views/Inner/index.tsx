@@ -1,36 +1,56 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 
 import {
   ImageContentTemplate,
   ImageContentLeft,
   ImageContentRight,
 } from 'DesignSystem/templates'
-import { Image } from 'DesignSystem/atoms'
+import { Dialog, Image } from 'DesignSystem/atoms'
+import { ArticleIdParam } from 'Article/routes/types'
+import { useQueryArticleById } from 'Article/hooks'
 
 export const InnerView: FC = () => {
-  const date = new Date('2021-04-03T13:00:07+0000')
+  const { articleId } = useParams<ArticleIdParam>()
+  const history = useHistory()
+
+  const { data, isError } = useQueryArticleById(decodeURIComponent(articleId))
+
+  const currentArticle = data?.response.docs[0]
+
   const formatDate = new Intl.DateTimeFormat('en-GB', {
     dateStyle: 'full',
-  }).format(date)
+  }).format(currentArticle ? new Date(currentArticle.pub_date) : new Date())
+  const image = `http://www.nytimes.com/${currentArticle?.multimedia[0].url}`
+
+  const goBack = () => history.goBack()
 
   return (
     <ImageContentTemplate>
       <ImageContentLeft>
-        <a href="#">Go to results page</a>
-        <h1>
-          A Visceral and Fabulist Short Story Collection Filled With Roots,
-          Inheritance and Blood
-        </h1>
-        <time>{formatDate}</time>
-        <p>
-          Carribean Fragoza’s new collection, “Eat the Mouth That Feeds You,”
-          moves between horror and the real.
-        </p>
-        <a href="#">Read the full article</a>
+        {currentArticle ? (
+          <Fragment>
+            <a href="#" onClick={goBack}>
+              Go to results page
+            </a>
+            <h1>{currentArticle.headline.main}</h1>
+            <time>{formatDate}</time>
+            <p>{currentArticle.snippet}</p>
+            <a target="_blank" href={currentArticle.web_url} rel="noreferrer">
+              Read the full article
+            </a>
+          </Fragment>
+        ) : null}
       </ImageContentLeft>
       <ImageContentRight>
-        <Image src="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg" />
+        {currentArticle ? <Image src={image} /> : null}
       </ImageContentRight>
+      <Dialog
+        isVisible={isError}
+        title="Sorry for that"
+        content="Seems like something went wrong when trying to search articles"
+        onClose={goBack}
+      />
     </ImageContentTemplate>
   )
 }

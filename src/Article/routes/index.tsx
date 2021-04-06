@@ -2,11 +2,7 @@ import React, { FC, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 
 import { SearchView, InnerView } from 'Article/views'
-
-export enum ArticleRoute {
-  SEARCH = '/',
-  INNER = '/article/:articleId',
-}
+import { ArticleRoute } from './types'
 
 export const ArticleRoutes: FC = () => (
   <Fragment>
