@@ -11,9 +11,11 @@ export const useUrlQuery = () => {
   const setUrlParam = (paramKey: string, paramValue: string) => {
     const searchParams = new URLSearchParams(location.search)
     searchParams.set(paramKey, paramValue)
+    console.log('here', paramKey, paramValue, getQueryParamFromUrl('q'))
     history.push({
       search: searchParams.toString(),
     })
+    console.log({ history })
   }
 
   return { getQueryParamFromUrl, setUrlParam }

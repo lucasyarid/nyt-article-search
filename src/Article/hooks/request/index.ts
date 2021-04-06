@@ -17,5 +17,7 @@ export const useQueryArticles = (q?: string, page?: string) =>
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchIntervalInBackground: false,
+      enabled: !!q,
+      retry: 2,
     }
   )

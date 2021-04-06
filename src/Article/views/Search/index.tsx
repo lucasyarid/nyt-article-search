@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { Dialog } from 'DesignSystem/atoms'
@@ -14,16 +14,15 @@ export const Wrapper = styled.div`
 export const SearchView: FC = () => {
   const { getQueryParamFromUrl, setUrlParam } = useUrlQuery()
 
-  const pageFromUrl = getQueryParamFromUrl('page')
-  const [page, setPage] = useState(Number(pageFromUrl))
+  const [page, setPage] = useState(0)
+  const [query, setQuery] = useState('')
 
-  const queryFromUrl = getQueryParamFromUrl('query') || ''
-  const [query, setQuery] = useState(queryFromUrl)
+  useEffect(() => {
+    setPage(Number(getQueryParamFromUrl('page')))
+    setQuery(getQueryParamFromUrl('q') || '')
+  }, [])
 
-  const { data, isLoading, error } = useQueryArticles(query, page.toString())
-  const [hasError, setHasError] = useState(false)
-  console.log(data)
-  if (error) setHasError(true)
+  const { data, isLoading, isError } = useQueryArticles(query, page.toString())
 
   const [selected, setSelected] = useState(0)
 
@@ -48,7 +47,10 @@ export const SearchView: FC = () => {
       return previousPage
     })
 
-  const onClose = () => setHasError(false)
+  const onClose = () => {
+    setUrlParam('q', '')
+    setQuery('')
+  }
 
   const headToArticle = () => console.log(selected)
 
@@ -65,9 +67,9 @@ export const SearchView: FC = () => {
           placeholder="Search New York Times articles"
           onDebounced={onDebounced}
           resultList={resultList || []}
-          value={queryFromUrl}
+          value={query}
           delay={500}
-          isFirstPage={!Number(pageFromUrl)}
+          isFirstPage={!page}
           isLastPage={false}
           onClickNext={onClickNext}
           onClickPrevious={onClickPrevious}
@@ -78,9 +80,9 @@ export const SearchView: FC = () => {
         />
       </Wrapper>
       <Dialog
-        isVisible={hasError}
+        isVisible={isError}
         title="Sorry for that"
-        content="Seems like something went wrong on searching for articles"
+        content="Seems like something went wrong when trying to search articles"
         onClose={onClose}
       />
     </CenteredTemplate>
