@@ -2,12 +2,7 @@ import React, { FC } from 'react'
 
 import { InputProps } from '../types'
 
-import {
-  InputWrapper,
-  StyledLabel,
-  StyledInput,
-  StyledIcon,
-} from './StyledInput'
+import { InputWrapper, StyledLabel, StyledInput, StyledIcon } from './styled'
 
 export const Input: FC<InputProps> = ({
   name,

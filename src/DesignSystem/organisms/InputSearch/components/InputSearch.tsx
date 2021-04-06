@@ -1,5 +1,4 @@
 import React, { FC, useState, KeyboardEvent } from 'react'
-import styled from 'styled-components'
 
 import { Icon } from 'DesignSystem/quarks'
 import { Input } from 'DesignSystem/atoms'
@@ -8,10 +7,7 @@ import { DropdownContent } from 'DesignSystem/molecules'
 import { useDebounce } from '../hooks/useDebounce'
 import { useHistory } from 'react-router-dom'
 import { InputSearchProps } from '../types'
-
-const InputSearchWrapper = styled.div`
-  position: relative;
-`
+import { InputSearchWrapper } from './styled'
 
 export const InputSearch: FC<InputSearchProps> = ({
   onDebounced,
