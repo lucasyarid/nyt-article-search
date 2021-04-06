@@ -21,5 +21,5 @@ export interface NYTSearchParams {
   fq?: FilterQuery
   fl?: LimitFields[]
   q?: string
-  page?: number
+  page?: string
 }

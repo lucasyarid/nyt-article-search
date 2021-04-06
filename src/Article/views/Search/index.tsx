@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
-
 import styled from 'styled-components'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import { Dialog } from 'DesignSystem/atoms'
 import { InputSearch } from 'DesignSystem/organisms'
@@ -14,22 +14,34 @@ export const Wrapper = styled.div`
 const resultList = ['title 1', 'title 2', 'title 3', 'title 4']
 
 export const SearchView: FC = () => {
-  const [search, setSearch] = useState('')
+  const history = useHistory()
+  const location = useLocation()
+
   const [selected, setSelected] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
-  const onDebounced = (e: string) => setSearch(e)
+  const queryFromUrl = new URLSearchParams(location.search).get('q') as string
+  const pageFromUrl = new URLSearchParams(location.search).get('page') as string
 
-  const onClickNext = () => console.log('onClickNext')
-  const onClickPrevious = () => console.log('onClickPrevious')
+  const setUrlParam = (paramKey: string, paramValue: string) => {
+    const searchParams = new URLSearchParams(location.search)
+    searchParams.set(paramKey, paramValue)
+    history.push({
+      search: searchParams.toString(),
+    })
+  }
 
-  const onClose = () => setIsVisible(false)
+  const onDebounced = (query: string) => {
+    setUrlParam('q', query)
+    fetchData(query)
+  }
 
-  const fetchData = async () => {
+  const fetchData = async (query?: string, page?: string) => {
     const data = await fetchArticlesByQuery({
       fq: 'document_type:("article")',
       fl: ['_id', 'document_type', 'headline'],
-      q: 'Rupert Murdoch, Accepting Award, Condemns ‘Awful Woke Orthodoxy’',
+      q: query || queryFromUrl,
+      page: page || pageFromUrl,
     })
     console.log({ data })
   }
@@ -37,6 +49,25 @@ export const SearchView: FC = () => {
   useEffect(() => {
     fetchData()
   }, [])
+
+  const onClickNext = () => {
+    const pageFromUrlNumber = Number(pageFromUrl) || 0
+    const nextPage = (pageFromUrlNumber + 1).toString()
+
+    setUrlParam('page', nextPage)
+    fetchData(undefined, nextPage)
+  }
+
+  const onClickPrevious = () => {
+    const pageFromUrlNumber = Number(pageFromUrl)
+    if (!pageFromUrlNumber) return
+    const nextPage = (pageFromUrlNumber - 1).toString()
+
+    setUrlParam('page', nextPage)
+    fetchData(undefined, nextPage)
+  }
+
+  const onClose = () => setIsVisible(false)
 
   return (
     <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
@@ -47,9 +78,9 @@ export const SearchView: FC = () => {
           placeholder="search"
           onDebounced={onDebounced}
           resultList={resultList}
-          value={search}
+          value={queryFromUrl || ''}
           delay={300}
-          isFirstPage={false}
+          isFirstPage={!Number(pageFromUrl)}
           isLastPage={false}
           onClickNext={onClickNext}
           onClickPrevious={onClickPrevious}

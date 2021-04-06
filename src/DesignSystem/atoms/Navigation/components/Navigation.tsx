@@ -26,6 +26,11 @@ const NavigationWrapper = styled.div`
   }
 `
 
+const ArrowRight = styled(Icon.ArrowRight)`
+  display: block;
+  margin-left: auto;
+`
+
 export const Navigation: FC<NavigationProps> = ({
   isFirstPage,
   isLastPage,
@@ -36,8 +41,6 @@ export const Navigation: FC<NavigationProps> = ({
     {!isFirstPage && (
       <Icon.ArrowLeft aria-label="Previous Page" onClick={onClickPrevious} />
     )}
-    {!isLastPage && (
-      <Icon.ArrowRight aria-label="Next Page" onClick={onClickNext} />
-    )}
+    {!isLastPage && <ArrowRight aria-label="Next Page" onClick={onClickNext} />}
   </NavigationWrapper>
 )
