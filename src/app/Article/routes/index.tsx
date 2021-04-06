@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 
-import { SearchView, InnerView } from 'Article/views'
+import { SearchView, InnerView } from 'app/Article/views'
 import { ArticleRoute } from './types'
 
 export const ArticleRoutes: FC = () => (

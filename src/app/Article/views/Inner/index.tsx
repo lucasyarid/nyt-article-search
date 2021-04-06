@@ -7,8 +7,8 @@ import {
   ImageContentRight,
 } from 'DesignSystem/templates'
 import { Dialog, Image } from 'DesignSystem/atoms'
-import { ArticleIdParam } from 'Article/routes/types'
-import { useQueryArticleById } from 'Article/hooks'
+import { ArticleIdParam } from 'app/Article/routes/types'
+import { useQueryArticleById } from 'app/Article/hooks'
 
 export const InnerView: FC = () => {
   const { articleId } = useParams<ArticleIdParam>()

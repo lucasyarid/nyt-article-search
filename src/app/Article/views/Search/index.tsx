@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { Dialog, Navigation } from 'DesignSystem/atoms'
 import { InputSearch } from 'DesignSystem/organisms'
 import { CenteredTemplate } from 'DesignSystem/templates'
-import { useQueryArticles } from 'Article/hooks'
+import { useQueryArticles } from 'app/Article/hooks'
 import { useQueryString } from 'Base/router'
 
 export const SearchView: FC = () => {

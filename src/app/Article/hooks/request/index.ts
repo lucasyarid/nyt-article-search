@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { fetchArticlesByQuery } from 'Article/api'
+import { fetchArticlesByQuery } from 'app/Article/api'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useQueryArticles = (q?: string, page?: string) =>
