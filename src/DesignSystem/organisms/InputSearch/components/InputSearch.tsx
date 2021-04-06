@@ -70,16 +70,18 @@ export const InputSearch: FC<InputSearchProps> = ({
         autoComplete="off"
         {...props}
       />
-      <DropdownContent
-        resultList={resultList}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-        onClickNext={onClickNext}
-        onClickPrevious={onClickPrevious}
-        selected={selected}
-        setSelected={setSelected}
-        onClick={onClick}
-      />
+      {resultList.length ? (
+        <DropdownContent
+          resultList={resultList}
+          isFirstPage={isFirstPage}
+          isLastPage={isLastPage}
+          onClickNext={onClickNext}
+          onClickPrevious={onClickPrevious}
+          selected={selected}
+          setSelected={setSelected}
+          onClick={onClick}
+        />
+      ) : null}
     </InputSearchWrapper>
   )
 }

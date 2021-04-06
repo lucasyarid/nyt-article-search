@@ -12,9 +12,9 @@ export const CenteredTemplateWrapper = styled.section`
   height: 100vh;
   display: grid;
   justify-content: center;
-  align-content: center;
   overflow: hidden;
   position: relative;
+  padding-top: 100px;
 `
 
 export const CenteredTemplateBackground = styled.div<CenteredTemplateProps>`

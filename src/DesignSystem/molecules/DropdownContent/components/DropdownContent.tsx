@@ -29,7 +29,7 @@ const StyledList = styled.li`
     background-color: var(--light-gray);
   }
 
-  & h5 {
+  & h6 {
     margin: 0;
     padding: 15px 30px;
     .dark & {
@@ -61,7 +61,7 @@ export const DropdownContent: FC<DropdownContentProps> = ({
             onMouseOver={handleOnMouseOver(key)}
             onClick={onClick}
           >
-            <h5>{listItem}</h5>
+            <h6>{listItem}</h6>
           </StyledList>
         ))}
       </ul>
