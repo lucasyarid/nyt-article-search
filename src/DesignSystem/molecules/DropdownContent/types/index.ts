@@ -1,8 +1,10 @@
-import { MouseEventHandler } from 'react'
+export interface ResultListItem {
+  url: string
+  label: string
+}
 
 export interface SearchList {
-  resultList: string[]
+  resultList: ResultListItem[]
   selected: number
   setSelected: (e: number) => void
-  onClick: MouseEventHandler<HTMLLIElement>
 }

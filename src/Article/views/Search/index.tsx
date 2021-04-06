@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { Dialog, Navigation } from 'DesignSystem/atoms'
@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 export const SearchView: FC = () => {
   const [page, setPage] = useQueryString('page')
   const [query, setQuery] = useQueryString('q')
-  const [selected, setSelected] = useState(0)
 
   const { data, isLoading, isError } = useQueryArticles(query, page.toString())
 
@@ -35,9 +34,11 @@ export const SearchView: FC = () => {
     setPage((Number(page) - 1).toString())
   }
 
-  const headToArticle = () => console.log(selected)
-
-  const resultList = data?.response?.docs.map((doc) => doc.headline.main) || []
+  const resultList =
+    data?.response?.docs.map((doc) => ({
+      url: `/article/${encodeURIComponent(doc._id)}`,
+      label: doc.headline.main,
+    })) || []
 
   return (
     <CenteredTemplate backgroundSrc="https://www.nytimes.com/images/2021/02/19/books/review/Fajardo-Anstine2/Fajardo-Anstine2-videoSixteenByNine3000.jpg">
@@ -50,10 +51,6 @@ export const SearchView: FC = () => {
           resultList={resultList}
           value={query}
           delay={500}
-          selected={selected}
-          setSelected={setSelected}
-          onClick={headToArticle}
-          onEnter={headToArticle}
         />
 
         {resultList.length ? (

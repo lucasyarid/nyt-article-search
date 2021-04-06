@@ -1,5 +1,5 @@
 import { DropdownContent } from './components/DropdownContent'
-import { SearchList } from './types'
+import { SearchList, ResultListItem } from './types'
 
 export { DropdownContent }
-export type { SearchList }
+export type { SearchList, ResultListItem }

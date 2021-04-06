@@ -1,24 +1,24 @@
-import React, { FC, KeyboardEvent } from 'react'
+import React, { FC, useState, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 
 import { Icon } from 'DesignSystem/quarks'
 import { Input, InputProps } from 'DesignSystem/atoms'
-import { DropdownContent, SearchList } from 'DesignSystem/molecules'
+import { DropdownContent } from 'DesignSystem/molecules'
 
 import { useDebounce } from '../hooks/useDebounce'
+import { ResultListItem } from 'DesignSystem/molecules/DropdownContent'
+import { useHistory } from 'react-router-dom'
 
 const InputSearchWrapper = styled.div`
   position: relative;
 `
 
-interface InputSearchProps
-  extends Omit<InputProps, 'onMouseOver' | 'onClick'>,
-    SearchList {
+interface InputSearchProps extends InputProps {
+  resultList: ResultListItem[]
   isLoading?: boolean
   delay: number
   value: string
   onDebounced: (e: string) => void
-  onEnter: () => void
 }
 
 export const InputSearch: FC<InputSearchProps> = ({
@@ -26,13 +26,12 @@ export const InputSearch: FC<InputSearchProps> = ({
   delay,
   isLoading,
   resultList,
-  onEnter,
-  onClick,
   value,
-  selected,
-  setSelected,
   ...props
 }: InputSearchProps) => {
+  const history = useHistory()
+
+  const [selected, setSelected] = useState(0)
   const [newValue, handleInputChange] = useDebounce({
     initialValue: value,
     delay,
@@ -42,17 +41,21 @@ export const InputSearch: FC<InputSearchProps> = ({
   const icon = isLoading ? Icon.Loading : Icon.MagnifyingGlass
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') history.push(resultList[selected].url)
+
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      if (selected + 1 < resultList.length) setSelected(selected + 1)
-      else setSelected(0)
+      setSelected((prevState) =>
+        prevState + 1 < resultList.length ? prevState + 1 : 0
+      )
     }
     if (e.key === 'ArrowUp') {
       e.preventDefault()
-      if (selected - 1 >= 0) setSelected(selected - 1)
-      else setSelected(resultList.length - 1)
+
+      setSelected((prevState) =>
+        prevState - 1 >= 0 ? prevState - 1 : resultList.length - 1
+      )
     }
-    if (e.key === 'Enter') onEnter()
   }
 
   return (
@@ -70,7 +73,6 @@ export const InputSearch: FC<InputSearchProps> = ({
           resultList={resultList}
           selected={selected}
           setSelected={setSelected}
-          onClick={onClick}
         />
       ) : null}
     </InputSearchWrapper>

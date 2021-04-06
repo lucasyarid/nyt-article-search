@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { SearchList } from '../types'
@@ -44,7 +45,6 @@ export const DropdownContent: FC<SearchList> = ({
   selected,
   setSelected,
   resultList,
-  onClick,
 }: SearchList) => {
   const handleOnMouseOver = (key: number) => () => setSelected(key)
 
@@ -57,9 +57,10 @@ export const DropdownContent: FC<SearchList> = ({
             key={key}
             aria-selected={selected === key}
             onMouseOver={handleOnMouseOver(key)}
-            onClick={onClick}
           >
-            <h6>{listItem}</h6>
+            <Link to={listItem.url}>
+              <h6>{listItem.label}</h6>
+            </Link>
           </StyledList>
         ))}
       </ul>
