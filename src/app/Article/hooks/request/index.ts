@@ -51,6 +51,6 @@ export const useQueryArticlesMultimedia = () =>
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchIntervalInBackground: false,
-      retry: 2,
+      retry: 0,
     }
   )
