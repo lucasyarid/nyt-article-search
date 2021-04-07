@@ -34,7 +34,7 @@ export const InnerView: FC = () => {
       <Dialog
         isVisible={true}
         title="Sorry for that"
-        content="Seems like something went wrong when trying to search articles"
+        content="Seems like something went wrong when trying to display this particular article"
         onClose={goBack}
       />
     )

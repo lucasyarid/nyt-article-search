@@ -3,29 +3,38 @@ import { screen, render } from '@testing-library/react'
 import { axe } from 'jest-axe'
 
 import { DropdownContent } from '../DropdownContent'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('DropdownContent', () => {
-  const resultList = ['title 1', 'title 2', 'title 3']
+  const resultList = [
+    { label: 'title 1', url: '/atest1' },
+    { label: 'title 2', url: '/test2' },
+    { label: 'title 3', url: '/test3' },
+  ]
   const props = {
     resultList,
     selected: 0,
     setSelected: jest.fn(),
-    isFirstPage: false,
-    isLastPage: false,
-    onClickNext: jest.fn(),
-    onClickPrevious: jest.fn(),
   }
 
   it('renders DropdownContent with necessary content', () => {
-    render(<DropdownContent {...props} />)
+    render(
+      <Router>
+        <DropdownContent {...props} />
+      </Router>
+    )
 
-    expect(screen.getByText(resultList[0])).toBeInTheDocument()
-    expect(screen.getByText(resultList[1])).toBeInTheDocument()
-    expect(screen.getByText(resultList[2])).toBeInTheDocument()
+    expect(screen.getByText(resultList[0].label)).toBeInTheDocument()
+    expect(screen.getByText(resultList[1].label)).toBeInTheDocument()
+    expect(screen.getByText(resultList[2].label)).toBeInTheDocument()
   })
 
   it('should not have any accessibility violation', async () => {
-    const { container } = render(<DropdownContent {...props} />)
+    const { container } = render(
+      <Router>
+        <DropdownContent {...props} />
+      </Router>
+    )
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
