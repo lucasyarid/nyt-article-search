@@ -12,7 +12,7 @@ interface NYTMultimedia {
   url: string
 }
 
-interface NYTArticle {
+export interface NYTArticle {
   _id: string
   web_url: string
   headline: NYTHeadline

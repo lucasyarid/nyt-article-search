@@ -15,7 +15,7 @@ export const InnerView: FC = () => {
   const { articleId } = useParams<ArticleIdParam>()
   const history = useHistory()
 
-  const { data, isError, isLoading, isFetching } = useQueryArticleById(
+  const { data, isError, isFetching } = useQueryArticleById(
     decodeURIComponent(articleId)
   )
 

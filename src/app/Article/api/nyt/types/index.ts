@@ -1,4 +1,4 @@
-import { NYTBaseResponse } from './response'
+import { NYTBaseResponse, NYTArticle } from './response'
 import { NYTSearchParams } from './params'
 
-export type { NYTBaseResponse, NYTSearchParams }
+export type { NYTBaseResponse, NYTSearchParams, NYTArticle }
