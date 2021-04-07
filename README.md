@@ -5,7 +5,7 @@ A simple react app that searches and displays New York Times articles.
 
 ## How to run
 
-Run `yarn install` in the root of the package and add your `REACT_APP_NYT_API_KEY` to the `.env` file (copy paste from `.env.example`).
+Run `yarn install` in the root of the project and add your `REACT_APP_NYT_API_KEY` to the `.env` file (copy paste from `.env.example`).\
 Instructions on how to get the key [here](https://developer.nytimes.com/get-started).
 
 ### `yarn start`
