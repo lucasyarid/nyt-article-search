@@ -1,6 +1,6 @@
 import React, { FC, useEffect, ImgHTMLAttributes } from 'react'
 
-import DefaultThumbnail from '../assets/default-thumbnail.jpg'
+import DefaultThumbnail from '../assets/default-thumbnail.jpeg'
 import { useImgOnLoad } from '../hooks/useImage'
 
 export const Image: FC<ImgHTMLAttributes<HTMLImageElement>> = ({
