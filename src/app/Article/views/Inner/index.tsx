@@ -9,7 +9,7 @@ import {
 import { Dialog, Image } from 'DesignSystem/atoms'
 import { ArticleIdParam } from 'app/Article/routes/types'
 import { useQueryArticleById } from 'app/Article/hooks'
-import { NYT_URL_IMG } from './constants'
+import { NYT_URL_IMG } from 'app/Article/api'
 
 export const InnerView: FC = () => {
   const { articleId } = useParams<ArticleIdParam>()

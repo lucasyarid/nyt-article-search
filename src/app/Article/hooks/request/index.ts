@@ -39,3 +39,19 @@ export const useQueryArticleById = (id?: string) =>
       retry: 2,
     }
   )
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const useQueryArticlesMultimedia = () =>
+  useQuery(
+    ['queryArticlesMultimedia'],
+    () =>
+      fetchArticlesByQuery({
+        fl: ['multimedia'],
+      }),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchIntervalInBackground: false,
+      retry: 2,
+    }
+  )

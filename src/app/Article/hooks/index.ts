@@ -1,3 +1,7 @@
-import { useQueryArticles, useQueryArticleById } from './request'
+import {
+  useQueryArticles,
+  useQueryArticleById,
+  useQueryArticlesMultimedia,
+} from './request'
 
-export { useQueryArticles, useQueryArticleById }
+export { useQueryArticles, useQueryArticleById, useQueryArticlesMultimedia }
