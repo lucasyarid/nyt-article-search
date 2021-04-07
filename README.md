@@ -3,9 +3,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 A simple react app that searches and displays New York Times articles.
 
-## Available Scripts
+## How to run
 
-In the project directory, you can run:
+Run `yarn install` in the root of the package and add your `REACT_APP_NYT_API_KEY` to the `.env` file (copy paste from `.env.example`).
+Instructions on how to get the key [here](https://developer.nytimes.com/get-started).
 
 ### `yarn start`
 
@@ -17,7 +18,7 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
