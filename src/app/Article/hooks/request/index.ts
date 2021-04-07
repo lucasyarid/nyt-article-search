@@ -34,7 +34,6 @@ export const useQueryArticleById = (id?: string) =>
       }),
     {
       refetchOnWindowFocus: false,
-      refetchOnMount: false,
       refetchIntervalInBackground: false,
       retry: 2,
     }

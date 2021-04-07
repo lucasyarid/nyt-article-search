@@ -1,3 +1,3 @@
-import { ArticleRoutes } from './routes'
+import { ArticleRoute } from './routes'
 
-export { ArticleRoutes }
+export { ArticleRoute }

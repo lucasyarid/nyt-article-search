@@ -1,9 +1,17 @@
 import React, { FC } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom'
 
-import { ArticleRoutes } from 'app/Article/routes'
 import { GlobalStyles } from 'Base/styles/GlobalStyles'
+import { NotFound } from 'DesignSystem/templates'
+
+import { SearchView, InnerView } from 'app/Article/views'
+import { ArticleRoute } from 'app/Article/routes'
 
 const queryClient = new QueryClient()
 
@@ -14,7 +22,11 @@ const App: FC = () => (
 
       <div className="App">
         <Switch>
-          <ArticleRoutes />
+          <Route exact path={ArticleRoute.SEARCH} component={SearchView} />
+          <Route exact path={ArticleRoute.INNER} component={InnerView} />
+
+          <Route path="/404" component={NotFound} />
+          <Redirect to="/404" />
         </Switch>
       </div>
     </Router>
