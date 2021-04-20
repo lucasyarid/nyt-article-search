@@ -8,26 +8,17 @@ import { useQueryString } from 'Base/router'
 import { ArticleSlideshow } from './components/ArticleSlideshow'
 
 export const SearchView: FC = () => {
-  const [page, setPage] = useQueryString('page')
-  const [query, setQuery] = useQueryString('q')
+  const [{ q, page }, setQuery] = useQueryString()
 
-  const { data, isLoading, isError } = useQueryArticles(query, page.toString())
+  const { data, isLoading, isError } = useQueryArticles(q, page)
 
-  const onDebounced = (query: string) => {
-    setPage('0')
-    setQuery(query)
-  }
-
-  const resetQuery = () => {
-    setPage('0')
-    setQuery('')
-  }
-
-  const onClickNext = () => setPage((Number(page) + 1).toString())
+  const onDebounced = (query: string) => setQuery({ q: query, page: '0' })
+  const resetQuery = () => setQuery({ q: '', page: '0' })
+  const onClickNext = () => setQuery({ q, page: (Number(page) + 1).toString() })
 
   const onClickPrevious = () => {
     if (!Number(page)) return
-    setPage((Number(page) - 1).toString())
+    setQuery({ q, page:(Number(page) - 1).toString() })
   }
 
   const resultList =
@@ -45,11 +36,11 @@ export const SearchView: FC = () => {
           placeholder="Search New York Times articles"
           onDebounced={onDebounced}
           resultList={resultList}
-          value={query}
+          value={q || ''}
           delay={500}
         />
 
-        {resultList.length && !!query ? (
+        {resultList.length && !!q ? (
           <Navigation
             isFirstPage={!Number(page)}
             isLastPage={false}
