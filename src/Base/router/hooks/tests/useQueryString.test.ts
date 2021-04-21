@@ -2,18 +2,9 @@ import { renderHook, act } from '@testing-library/react-hooks'
 
 import { useQueryString } from '../useQueryString'
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: () => ({
-    search: '?q=elections&page=0'
-  }),
-  useHistory: () => ({
-    push: jest.fn()
-  })
-}))
-
 describe('useQueryString', () => {
   it('should return url params', () => {
+    window.history.pushState('', '', '?q=elections&page=0')
     const { result } = renderHook(() =>
       useQueryString()
     )
